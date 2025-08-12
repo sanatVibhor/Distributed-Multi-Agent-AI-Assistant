@@ -1,0 +1,35 @@
+Python: 3.10+
+
+OS: Linux/Windows/macOS (Ollama easiest on macOS/Linux; Windows WSL2 recommended).
+
+Optional GPU: CUDA 12.x for fastest HF pipelines; CPU-only will work but be slower.
+
+---- Install ----
+1) Create venv and install:
+   python -m venv .venv
+   source .venv/bin/activate   # Windows: .venv\Scripts\activate
+   pip install -r requirements.txt
+
+2) Ollama (recommended local LLM):
+   - Install from https://ollama.com
+   - Pull a model:
+     ollama pull mistral         # or: ollama pull llama3
+
+3) HF Transformers fallback (if not using Ollama):
+   - Edit rag_service.py: set USE_OLLAMA = False
+   - Make sure you have disk/GPU for model weights (e.g., mistralai/Mistral-7B-Instruct-v0.2)
+
+4) Build the index:
+   python build_index.py
+
+5) Run Streamlit app:
+   streamlit run app.py
+
+---- Environment Variables (optional) ----
+Not required by default. If you want to point to custom paths for models or embeddings, add them here.
+
+---- Troubleshooting ----
+- bitsandbytes build issues on Windows:
+  * Remove 'bitsandbytes' from requirements.txt and rely on Ollama (set USE_OLLAMA=True).
+- If PDFs fail to parse, ensure pypdf is installed (included) and files are not password-protected.
+- If Streamlit port is busy, run: streamlit run app.py --server.port 8502

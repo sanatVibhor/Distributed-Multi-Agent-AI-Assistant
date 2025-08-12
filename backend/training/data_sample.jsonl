@@ -1,0 +1,3 @@
+{"prompt":"Summarize: Our team meets every Monday at 10am for project sync.","response":"Your team sync happens every Monday at 10:00."}
+{"prompt":"Where do we store sprint notes?","response":"Sprint notes are stored under Notion → Project X → Sprint Notes."}
+{"prompt":"What is the deployment branch?","response":"Deploy from the 'main' branch after CI passes."}
